@@ -20,8 +20,13 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.7"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "pry"
+  spec.add_development_dependency "webmock"
 
   if RUBY_ENGINE == 'ruby'
     spec.add_dependency 'faraday_middleware', '~> 0'
+    spec.add_dependency 'nokogiri'
+    spec.add_dependency 'rest-client'
   end
 end
