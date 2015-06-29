@@ -2,7 +2,7 @@ module BillPro
   class APIResource < BillProObject
     extend BillPro::APIOperations::Request
     def self.retrieve
-      self.request(:post)
+      raise NotImplementedError
     end
   end
 end

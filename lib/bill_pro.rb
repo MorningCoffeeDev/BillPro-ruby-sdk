@@ -17,17 +17,18 @@ module BillPro
     attr_accessor :api_key, :api_base, :api_version
   end
   @api_base = 'https://gateway.billpro.com/'
+  @api_default_header = {:content_type => :xml}
 
   def self.api_url(url='', api_base_url=nil)
     (api_base_url || @api_base) + url
   end
 
-  def self.request(method)
+  def self.request(method: :post, url: @api_base, payload: '', header: @api_default_header)
     request_opts ||= {}
     request_opts[:method] = method
-    request_opts[:url] = @api_base
-    request_opts[:payload]= "<Request type='AuthorizeCapture'><AccountID>91178660</AccountID><AccountAuth>GoPJwdRDRKlcHpcg</AccountAuth></Request>"
-    request_opts[:header] = {:content_type => :xml}
+    request_opts[:url] = url
+    request_opts[:payload]= payload
+    request_opts[:header] = header
     execute_request(request_opts)
   end
 
